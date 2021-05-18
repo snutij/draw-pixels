@@ -29,6 +29,7 @@ function App() {
 
   return (
     <div>
+      <h1>Draw pixels</h1>
       <div
         className="grid-container"
         style={{
@@ -47,10 +48,10 @@ function App() {
         step="5"
       ></input>
 
-      <button onClick={handleResetDraw}>reset draw</button>
-      <button onClick={handleErase}>Erase mode : {erase ? "ON" : "OFF"}</button>
+      <button onClick={handleResetDraw}>RESET</button>
+      <button onClick={handleErase}>ERASE : {erase ? "ON" : "OFF"}</button>
       <button onClick={handleRandomColor}>
-        Random mode : {random ? "ON" : "OFF"}
+        RANDOM : {random ? "ON" : "OFF"}
       </button>
     </div>
   );

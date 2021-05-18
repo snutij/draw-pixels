@@ -16,13 +16,11 @@
 
 input,
 button {
-  border-radius: 4px;
-  border: 1px solid black;
-  color: black;
+  margin: 10px;
   font-size: 10px;
   letter-spacing: 2px;
   height: 35px;
-  text-decoration: none;
-  margin-right: 10px;
-  margin-left: 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+  color: black;
 }
