@@ -1,26 +1,202 @@
+/* ───── Layout ───── */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 24px;
+  animation: enter 0.8s ease-out;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ───── Header ───── */
+
+.header {
+  text-align: center;
+  animation: enter 0.6s ease-out;
+}
+
+.title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--text);
+}
+
+.title span {
+  color: var(--accent);
+}
+
+.dimension-readout {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+/* ───── Canvas ───── */
+
+.canvas-wrapper {
+  animation: enter 0.8s ease-out 0.12s both;
+}
+
 .grid-container {
   display: grid;
   width: 500px;
   height: 500px;
-  border: 1px solid black;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  cursor: crosshair;
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 32px 80px -12px rgba(0, 0, 0, 0.6),
+    0 0 120px -20px rgba(203, 254, 0, 0.025);
 }
 
 .grid-square {
-  background-color: white;
+  background-color: transparent;
+  transition: background-color 0.04s ease;
+  outline: 0.5px solid rgba(255, 255, 255, 0.018);
 }
 
-.grid-square::before {
-  content: "";
-  padding-bottom: 100%;
+/* ───── Toolbar ───── */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 24px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  animation: enter 0.8s ease-out 0.24s both;
 }
 
-input,
-button {
-  margin: 10px;
-  font-size: 10px;
-  letter-spacing: 2px;
-  height: 35px;
-  border: 1px solid black;
-  border-radius: 4px;
-  color: black;
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.toolbar-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--border);
+}
+
+/* ───── Range slider ───── */
+
+.dimension-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dimension-label {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  min-width: 20px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 90px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  box-shadow: 0 0 10px var(--accent-glow);
+  transition: box-shadow 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 18px rgba(203, 254, 0, 0.4);
+}
+
+input[type="range"]::-moz-range-track {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1px;
+  border: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* ───── Buttons ───── */
+
+.btn {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.btn:hover {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.btn.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  box-shadow: 0 0 24px var(--accent-glow);
+}
+
+.btn-reset:hover {
+  border-color: var(--danger);
+  color: var(--danger);
 }

@@ -4,11 +4,11 @@ function Square({ isRandom, isErase }: { isRandom: boolean; isErase: boolean }) 
   const squareEl = useRef<HTMLDivElement>(null);
 
   function changeBackgroundColor() {
-    let color = "#bdbdbd";
+    let color = "#cbfe00";
     if (isErase) {
-      color = "#fff";
+      color = "";
     } else if (isRandom) {
-      color = "#" + (((1 << 24) * Math.random()) | 0).toString(16);
+      color = "#" + (((1 << 24) * Math.random()) | 0).toString(16).padStart(6, "0");
     }
     if (squareEl.current) {
       squareEl.current.style.backgroundColor = color;
