@@ -13,7 +13,7 @@ Hover to paint. Click to toggle. Nothing more.
 
 <br>
 
-<img src="screen.png" width="540" alt="draw pixels — dark interface with a lime pixel heart on a grid">
+<img src="screen-1.png" width="540" alt="draw pixels — dark interface with a lime pixel heart on a grid">
 
 <br><br>
 
