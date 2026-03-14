@@ -1,12 +1,6 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 
-function Square({
-  isRandom,
-  isErase,
-}: {
-  isRandom: boolean;
-  isErase: boolean;
-}) {
+function Square({ isRandom, isErase }: { isRandom: boolean; isErase: boolean }) {
   const squareEl = useRef<HTMLDivElement>(null);
 
   function changeBackgroundColor() {
@@ -20,12 +14,6 @@ function Square({
       squareEl.current.style.backgroundColor = color;
     }
   }
-  return (
-    <div
-      className="grid-square"
-      ref={squareEl}
-      onMouseOver={changeBackgroundColor}
-    ></div>
-  );
+  return <div className="grid-square" ref={squareEl} onMouseOver={changeBackgroundColor}></div>;
 }
 export default Square;

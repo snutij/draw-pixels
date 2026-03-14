@@ -1,4 +1,4 @@
-import React, { BaseSyntheticEvent, useState } from "react";
+import { BaseSyntheticEvent, useState } from "react";
 import Square from "./Square";
 import "./App.css";
 
@@ -50,9 +50,7 @@ function App() {
 
       <button onClick={handleResetDraw}>RESET</button>
       <button onClick={handleErase}>ERASE : {erase ? "ON" : "OFF"}</button>
-      <button onClick={handleRandomColor}>
-        RANDOM : {random ? "ON" : "OFF"}
-      </button>
+      <button onClick={handleRandomColor}>RANDOM : {random ? "ON" : "OFF"}</button>
     </div>
   );
 }
