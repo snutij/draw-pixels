@@ -1,48 +1,55 @@
-# Draw pixels
+<div align="center">
 
-Simple application to draw pixels with mouse over.
+<br>
 
-[Live demo](https://draw-pixels.pages.dev/) 🚀
+<img src="src/favicon.svg" width="48" height="48" alt="draw pixels">
 
-![screen](screen.png)
+# draw pixels
+
+**A minimal pixel canvas for the browser.**\
+Hover to paint. Click to toggle. Nothing more.
+
+[Live Demo](https://draw-pixels.pages.dev/) &nbsp;&middot;&nbsp; [Source](src/App.tsx) &nbsp;&middot;&nbsp; [MIT License](LICENSE)
+
+<br>
+
+<img src="screen.png" width="540" alt="draw pixels — dark interface with a lime pixel heart on a grid">
+
+<br><br>
+
+</div>
 
 ## Features
 
-- Paint cells by hovering with the mouse
-- Random color mode
-- Erase mode
-- Reset canvas
-- Adjustable grid resolution
+|                     |                                                   |
+| ------------------- | ------------------------------------------------- |
+| **Hover to paint**  | Glide across the grid to fill cells instantly     |
+| **Random colors**   | Each stroke picks a new hue — chaotic, satisfying |
+| **Erase mode**      | Wipe cells clean with the same hover gesture      |
+| **Adjustable grid** | Slide from 2 &times; 2 up to 50 &times; 50        |
+| **Reset**           | One click to blank slate                          |
 
-## Tech stack
-
-| Role      | Tool                                                             |
-| --------- | ---------------------------------------------------------------- |
-| Build     | [Vite 8](https://vitejs.dev/) + [Rolldown](https://rolldown.rs/) |
-| UI        | [React 19](https://react.dev/)                                   |
-| Language  | [TypeScript 5](https://www.typescriptlang.org/)                  |
-| Linter    | [oxlint](https://oxc.rs/docs/guide/usage/linter.html)            |
-| Formatter | [oxfmt](https://oxc.rs/docs/guide/usage/formatter.html)          |
-| Tests     | [Vitest](https://vitest.dev/)                                    |
-| Git hooks | [pre-commit](https://pre-commit.com/)                            |
-
-## Setup
+## Quick start
 
 ```sh
 npm install
-pre-commit install
+npm run dev
 ```
 
 ## Scripts
 
-| Command          | Description                         |
-| ---------------- | ----------------------------------- |
-| `npm run dev`    | Start dev server with HMR           |
-| `npm run build`  | Type-check and build for production |
-| `npm run serve`  | Preview production build locally    |
-| `npm test`       | Run tests with Vitest               |
-| `npm run lint`   | Lint with oxlint                    |
-| `npm run format` | Format with oxfmt                   |
+```
+dev        Start dev server with HMR
+build      Type-check + production build
+serve      Preview production build locally
+test       Run tests (Vitest)
+lint       Lint with oxlint
+format     Format with oxfmt
+```
+
+## Stack
+
+[Vite 8](https://vitejs.dev/) + [Rolldown](https://rolldown.rs/) &nbsp;&bull;&nbsp; [React 19](https://react.dev/) &nbsp;&bull;&nbsp; [TypeScript 5](https://www.typescriptlang.org/) &nbsp;&bull;&nbsp; [Vitest](https://vitest.dev/) &nbsp;&bull;&nbsp; [oxlint](https://oxc.rs/docs/guide/usage/linter.html) &nbsp;&bull;&nbsp; [oxfmt](https://oxc.rs/docs/guide/usage/formatter.html)
 
 ## License
 
