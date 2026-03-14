@@ -2,7 +2,7 @@
 
 Simple application to draw pixels with mouse over.
 
-[Live demo](https://draw-pixels.vercel.app/) 🚀
+[Live demo](https://draw-pixels.pages.dev/) 🚀
 
 ![screen](screen.png)
 
