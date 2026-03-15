@@ -1,14 +1,16 @@
-import { useRef } from "react";
+import { useRef, type ReactElement } from "react";
 
-function Square({ isRandom, isErase }: { isRandom: boolean; isErase: boolean }) {
+function Square({ isRandom, isErase }: { isRandom: boolean; isErase: boolean }): ReactElement {
   const squareEl = useRef<HTMLDivElement>(null);
 
-  function changeBackgroundColor() {
+  function changeBackgroundColor(): void {
     let color = "#cbfe00";
     if (isErase) {
       color = "";
     } else if (isRandom) {
-      color = "#" + (((1 << 24) * Math.random()) | 0).toString(16).padStart(6, "0");
+      color = `#${Math.trunc((1 << 24) * Math.random())
+        .toString(16)
+        .padStart(6, "0")}`;
     }
     if (squareEl.current) {
       squareEl.current.style.backgroundColor = color;

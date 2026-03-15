@@ -1,38 +1,45 @@
-import { useEffect, useState } from "react";
-import Square from "./Square";
 import "./App.css";
+import { useEffect, useState, type ReactElement } from "react";
+import Square from "./Square";
 
-function App() {
+function App(): ReactElement {
   const [dimension, setDimension] = useState<number>(16);
   const [random, setRandom] = useState<boolean>(false);
   const [erase, setErase] = useState<boolean>(false);
 
-  const handleDimensionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDimensionChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setDimension(Number(event.target.value));
   };
 
-  const handleResetDraw = () => {
+  const handleResetDraw = (): void => {
     const elements = document.querySelectorAll<HTMLElement>(".grid-square");
-    elements.forEach((element: HTMLElement) => {
+    for (const element of elements) {
       element.style.background = "";
-    });
+    }
   };
 
-  const handleRandomColor = () => {
+  const handleRandomColor = (): void => {
     setErase(false);
     setRandom(!random);
   };
 
-  const handleErase = () => {
+  const handleErase = (): void => {
     setRandom(false);
     setErase(!erase);
   };
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.ctrlKey || event.metaKey || event.altKey) return;
-      const tag = (document.activeElement as HTMLElement)?.tagName.toLowerCase();
-      if (tag === "input" || tag === "textarea") return;
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.ctrlKey || event.metaKey || event.altKey) {
+        return;
+      }
+      let tag: string | undefined;
+      if (document.activeElement instanceof HTMLElement) {
+        tag = document.activeElement.tagName.toLowerCase();
+      }
+      if (tag === "input" || tag === "textarea") {
+        return;
+      }
 
       if (event.key === "e") {
         setRandom(false);
@@ -46,8 +53,10 @@ function App() {
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    globalThis.addEventListener("keydown", handleKeyDown);
+    return (): void => {
+      globalThis.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   return (
@@ -69,7 +78,7 @@ function App() {
             gridTemplateRows: `repeat(${dimension}, ${500 / dimension}px)`,
           }}
         >
-          {Array.from(Array(dimension * dimension), (_e, i) => (
+          {Array.from({ length: dimension * dimension }, (_e, i) => (
             <Square key={i} isRandom={random} isErase={erase} />
           ))}
         </div>

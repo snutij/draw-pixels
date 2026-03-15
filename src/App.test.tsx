@@ -1,15 +1,15 @@
 import { cleanup, render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it } from "vite-plus/test";
+import userEvent from "@testing-library/user-event";
 import App from "./App";
 
 afterEach(cleanup);
 
-function getButton(name: string) {
+function getButton(name: string): HTMLElement {
   return screen.getByRole("button", { name: new RegExp(name, "i") });
 }
 
-function isActive(button: HTMLElement) {
+function isActive(button: HTMLElement): boolean {
   return button.classList.contains("active");
 }
 
@@ -164,7 +164,7 @@ describe("keyboard mode switching", () => {
       render(<App />);
 
       const kbds = document.querySelectorAll(".btn kbd");
-      const keys = Array.from(kbds).map((kbd) => kbd.textContent);
+      const keys = [...kbds].map((kbd) => kbd.textContent);
 
       expect(keys).toEqual(["n", "e", "r"]);
     });
