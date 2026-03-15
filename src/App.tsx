@@ -1,21 +1,31 @@
 import "./App.css";
-import { useEffect, useState, type ReactElement } from "react";
+import { type ReactElement, useEffect, useState } from "react";
 import Square from "./Square";
 
-function App(): ReactElement {
-  const [dimension, setDimension] = useState<number>(16);
+const CANVAS_SIZE = 500;
+const DEFAULT_DIMENSION = 16;
+
+const getActiveTagName = (): string => {
+  if (document.activeElement instanceof HTMLElement) {
+    return document.activeElement.tagName.toLowerCase();
+  }
+  return "";
+};
+
+const handleResetDraw = (): void => {
+  const elements = document.querySelectorAll<HTMLElement>(".grid-square");
+  for (const element of elements) {
+    element.style.background = "";
+  }
+};
+
+const App = (): ReactElement => {
+  const [dimension, setDimension] = useState<number>(DEFAULT_DIMENSION);
   const [random, setRandom] = useState<boolean>(false);
   const [erase, setErase] = useState<boolean>(false);
 
   const handleDimensionChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setDimension(Number(event.target.value));
-  };
-
-  const handleResetDraw = (): void => {
-    const elements = document.querySelectorAll<HTMLElement>(".grid-square");
-    for (const element of elements) {
-      element.style.background = "";
-    }
   };
 
   const handleRandomColor = (): void => {
@@ -28,29 +38,29 @@ function App(): ReactElement {
     setErase(!erase);
   };
 
+  const applyModeSwitch = (key: string): void => {
+    if (key === "e") {
+      setRandom(false);
+      setErase((prev) => !prev);
+    } else if (key === "r") {
+      setErase(false);
+      setRandom((prev) => !prev);
+    } else if (key === "n") {
+      setRandom(false);
+      setErase(false);
+    }
+  };
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent): void => {
       if (event.ctrlKey || event.metaKey || event.altKey) {
         return;
       }
-      let tag: string | undefined;
-      if (document.activeElement instanceof HTMLElement) {
-        tag = document.activeElement.tagName.toLowerCase();
-      }
+      const tag = getActiveTagName();
       if (tag === "input" || tag === "textarea") {
         return;
       }
-
-      if (event.key === "e") {
-        setRandom(false);
-        setErase((prev) => !prev);
-      } else if (event.key === "r") {
-        setErase(false);
-        setRandom((prev) => !prev);
-      } else if (event.key === "n") {
-        setRandom(false);
-        setErase(false);
-      }
+      applyModeSwitch(event.key);
     };
 
     globalThis.addEventListener("keydown", handleKeyDown);
@@ -74,12 +84,12 @@ function App(): ReactElement {
         <div
           className="grid-container"
           style={{
-            gridTemplateColumns: `repeat(${dimension}, ${500 / dimension}px)`,
-            gridTemplateRows: `repeat(${dimension}, ${500 / dimension}px)`,
+            gridTemplateColumns: `repeat(${dimension}, ${CANVAS_SIZE / dimension}px)`,
+            gridTemplateRows: `repeat(${dimension}, ${CANVAS_SIZE / dimension}px)`,
           }}
         >
-          {Array.from({ length: dimension * dimension }, (_e, i) => (
-            <Square key={i} isRandom={random} isErase={erase} />
+          {Array.from({ length: dimension * dimension }, (_element, index) => (
+            <Square key={index} isRandom={random} isErase={erase} />
           ))}
         </div>
       </div>
@@ -128,5 +138,6 @@ function App(): ReactElement {
       </div>
     </div>
   );
-}
+};
+
 export default App;

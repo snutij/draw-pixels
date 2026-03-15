@@ -1,17 +1,14 @@
-import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vite-plus/test";
-import userEvent from "@testing-library/user-event";
+import { cleanup, render, screen } from "@testing-library/react";
 import App from "./App";
+import userEvent from "@testing-library/user-event";
 
 afterEach(cleanup);
 
-function getButton(name: string): HTMLElement {
-  return screen.getByRole("button", { name: new RegExp(name, "i") });
-}
+const getButton = (name: string): HTMLElement =>
+  screen.getByRole("button", { name: new RegExp(name, "i") });
 
-function isActive(button: HTMLElement): boolean {
-  return button.classList.contains("active");
-}
+const isActive = (button: HTMLElement): boolean => button.classList.contains("active");
 
 describe("keyboard mode switching", () => {
   describe("pressing 'e' toggles erase mode", () => {
