@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Square from "./Square";
 import "./App.css";
 
@@ -27,6 +27,28 @@ function App() {
     setRandom(false);
     setErase(!erase);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.ctrlKey || event.metaKey || event.altKey) return;
+      const tag = (document.activeElement as HTMLElement)?.tagName.toLowerCase();
+      if (tag === "input" || tag === "textarea") return;
+
+      if (event.key === "e") {
+        setRandom(false);
+        setErase((prev) => !prev);
+      } else if (event.key === "r") {
+        setErase(false);
+        setRandom((prev) => !prev);
+      } else if (event.key === "n") {
+        setRandom(false);
+        setErase(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
     <div className="app">
@@ -70,11 +92,20 @@ function App() {
         <div className="toolbar-divider" />
 
         <div className="toolbar-group">
+          <button
+            className={`btn${!erase && !random ? " active" : ""}`}
+            onClick={() => {
+              setRandom(false);
+              setErase(false);
+            }}
+          >
+            normal <kbd>n</kbd>
+          </button>
           <button className={`btn${erase ? " active" : ""}`} onClick={handleErase}>
-            erase
+            erase <kbd>e</kbd>
           </button>
           <button className={`btn${random ? " active" : ""}`} onClick={handleRandomColor}>
-            random
+            random <kbd>r</kbd>
           </button>
         </div>
 
