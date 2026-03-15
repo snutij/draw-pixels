@@ -16,3 +16,10 @@ repos:
         types: [file]
         files: \.(ts|tsx|json|css|md)$
         pass_filenames: true
+
+      - id: vitest
+        name: vitest
+        entry: npx vitest --run --passWithNoTests
+        language: system
+        pass_filenames: false
+        always_run: true
