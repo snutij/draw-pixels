@@ -22,10 +22,6 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run lint
+      - run: npx vp check
 
-      - run: npx oxfmt --check .
-
-      - run: npx tsc --noEmit
-
-      - run: npm test -- --run
+      - run: npx vp test
