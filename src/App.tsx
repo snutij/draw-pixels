@@ -20,9 +20,9 @@ const handleResetDraw = (): void => {
 };
 
 const App = (): ReactElement => {
-  const [dimension, setDimension] = useState<number>(DEFAULT_DIMENSION);
-  const [random, setRandom] = useState<boolean>(false);
-  const [erase, setErase] = useState<boolean>(false);
+  const [dimension, setDimension] = useState(DEFAULT_DIMENSION);
+  const [random, setRandom] = useState(false);
+  const [erase, setErase] = useState(false);
 
   const handleDimensionChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setDimension(Number(event.target.value));
