@@ -6,7 +6,7 @@ import userEvent from "@testing-library/user-event";
 afterEach(cleanup);
 
 const getButton = (name: string): HTMLElement =>
-  screen.getByRole("button", { name: new RegExp(name, "i") });
+  screen.getByRole("button", { name: new RegExp(name, "u") });
 
 const isActive = (button: HTMLElement): boolean => button.classList.contains("active");
 
