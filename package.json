@@ -12,20 +12,20 @@
     "check": "vp check"
   },
   "dependencies": {
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react": "6.0.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "@vitejs/plugin-react": "6.0.5",
     "jsdom": "^29.0.0",
     "typescript": "5.9.3",
-    "vite": "8.0.0",
-    "vite-plus": "^0.1.11"
+    "vite": "8.2.0",
+    "vite-plus": "^0.2.6"
   },
   "engines": {
     "node": ">=22"
