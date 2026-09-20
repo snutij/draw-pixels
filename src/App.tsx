@@ -24,7 +24,7 @@ const App = (): ReactElement => {
   const [random, setRandom] = useState<boolean>(false);
   const [erase, setErase] = useState<boolean>(false);
 
-  const handleDimensionChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleDimensionChange = (event: { readonly target: { readonly value: string } }): void => {
     setDimension(Number(event.target.value));
   };
 
@@ -52,7 +52,9 @@ const App = (): ReactElement => {
   };
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent): void => {
+    const handleKeyDown = (
+      event: Readonly<{ altKey: boolean; ctrlKey: boolean; key: string; metaKey: boolean }>,
+    ): void => {
       if (event.ctrlKey || event.metaKey || event.altKey) {
         return;
       }

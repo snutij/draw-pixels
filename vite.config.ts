@@ -32,11 +32,8 @@ export default {
       "one-var": "off",
       // Optional chaining is a safe, standard ES2020 feature
       "oxc/no-optional-chaining": "off",
-      "require-unicode-regexp": "off",
       // Declaration sort conflicts across syntax kinds; member sort within {} is enforced
       "sort-imports": ["error", { ignoreDeclarationSort: true }],
-      "sort-vars": "off",
-      "typescript/prefer-readonly-parameter-types": "off",
       // React conventionally uses PascalCase filenames for components
       "unicorn/filename-case": ["error", { cases: { kebabCase: true, pascalCase: true } }],
     },
