@@ -1,7 +1,6 @@
-import { defineConfig } from "vite-plus";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig({
+export default {
   lint: {
     categories: {
       correctness: "error",
@@ -13,7 +12,7 @@ export default defineConfig({
     },
     options: {
       typeAware: true,
-      typeCheck: false,
+      typeCheck: true,
     },
     overrides: [
       {
@@ -50,4 +49,4 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./src/test-setup.ts",
   },
-});
+};
