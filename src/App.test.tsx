@@ -6,8 +6,9 @@ import userEvent from "@testing-library/user-event";
 afterEach(cleanup);
 
 const getButton = (name: string): HTMLElement =>
-    screen.getByRole("button", { name: new RegExp(name, "iu") }),
-  isActive = (button: HTMLElement): boolean => button.classList.contains("active");
+  screen.getByRole("button", { name: new RegExp(name, "i") });
+
+const isActive = (button: HTMLElement): boolean => button.classList.contains("active");
 
 describe("keyboard mode switching", () => {
   describe("pressing 'e' toggles erase mode", () => {
@@ -159,8 +160,8 @@ describe("keyboard mode switching", () => {
     it("shows kbd elements on mode buttons", () => {
       render(<App />);
 
-      const kbds = document.querySelectorAll(".btn kbd"),
-        keys = [...kbds].map((kbd) => kbd.textContent);
+      const kbds = document.querySelectorAll(".btn kbd");
+      const keys = [...kbds].map((kbd) => kbd.textContent);
 
       expect(keys).toEqual(["n", "e", "r"]);
     });
