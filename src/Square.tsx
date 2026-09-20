@@ -5,7 +5,10 @@ const DEFAULT_COLOR = "#cbfe00";
 const HEX_LENGTH = 6;
 const HEX_RADIX = 16;
 
-const Square = ({ isRandom, isErase }: { isErase: boolean; isRandom: boolean }): ReactElement => {
+const Square = ({
+  isRandom,
+  isErase,
+}: Readonly<{ isErase: boolean; isRandom: boolean }>): ReactElement => {
   const squareEl = useRef<HTMLDivElement>(null);
 
   const changeBackgroundColor = (): void => {

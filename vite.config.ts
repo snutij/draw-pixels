@@ -1,7 +1,6 @@
-import { defineConfig } from "vite-plus";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig({
+export default {
   lint: {
     categories: {
       correctness: "error",
@@ -30,6 +29,7 @@ export default defineConfig({
       "max-lines-per-function": "off",
       // Ternary in JSX className is idiomatic React — no alternative exists
       "no-ternary": "off",
+      "one-var": "off",
       // Optional chaining is a safe, standard ES2020 feature
       "oxc/no-optional-chaining": "off",
       // Declaration sort conflicts across syntax kinds; member sort within {} is enforced
@@ -46,4 +46,4 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./src/test-setup.ts",
   },
-});
+};
