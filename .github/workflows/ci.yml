@@ -25,3 +25,5 @@ jobs:
       - run: npx vp check
 
       - run: npx vp test
+
+      - run: npm run build
